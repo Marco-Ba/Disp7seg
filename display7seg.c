@@ -16,11 +16,15 @@ char vetor[16] = { 0x3F, 0x06, 0x5B, 0x4F,
 
 void display7seg_init(void) 
 {
-    TRISD =0x00;
-    PORTD =0x00;
+    ANSELH = 0;
+    TRISB =0x00;
+    PORTB =0x00;
 }
 
 void display7seg( int c )
 {
-    PORTD = vetor[c];
+    if(c >=0 && c <= 15)
+        PORTB = vetor[c];
+    else
+        PORTB = 0x00;
 }
